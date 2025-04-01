@@ -6,8 +6,14 @@
             <div>listing invoices</div>
         </div> --}}
         @if ($message = Session::get('success'))
-        <div class="flex flex-row self-center ">
-            <h3 class="text-center text-success">{{ $message }}</h3>
+        <div class="flex flex-row self-center bg-green-300">
+            <h3 class="text-center text-5xl">{{ $message }}</h3>
+        </div>
+        @endif
+
+        @if ($message = Session::get('failure'))
+        <div class="flex flex-row self-center bg-red-300">
+            <h3 class="text-center text-5xl">{{ $message }}</h3>
         </div>
         @endif
         
@@ -35,7 +41,7 @@
                         <td class="">{{ $element->from }}</td>
                         <td class="">{{ $element->to }}</td>
                         <td class="">{{ $element->items_count }}</td>
-                        <td class="w-20 ">Edit</td>
+                        <td class="w-20 "><x-buttonform-edit id="{{ $element->id }}" ></x-buttonform-edit></td>
                         <td class="w-20 bg-amber-400"><x-buttonform-delete
                                 id="{{ $element->id }}"></x-buttonform-delete></td>
                         <td class="w-20">Download</td>
@@ -43,5 +49,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $data->links() }}
     </div>
 </x-layoutmain>

@@ -14,10 +14,13 @@ class SerialNumberFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
         return [
-            //
+            'prefix' => 'AB',
+            'number' => 1,
+            'increment' => 1,
         ];
     }
 }

@@ -15,8 +15,8 @@ class InvoiceController extends Controller
     {
         //
         // $data = Invoice::all();
-        $data = Invoice::withCount('items')->get();
-        
+       // $data = Invoice::withCount('items')->get();
+        $data = Invoice::withCount('items')->paginate(40);
         // dd($data);
         return view('invoices.index', [ 'data' => $data ]);
     }
@@ -61,7 +61,8 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        //
+        $data = Invoice::find($invoice->id);
+        return view('invoices.update',['invoice' => $data]);
     }
 
     /**
@@ -69,7 +70,9 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
-        //
+       $validated = $request->validate([ 'num' => ['required'], 'title' => ['required'] , 'from' => ['required'], 'to' => ['required'] ]);
+       $invoice->update($validated);
+       return redirect()->route('invoices.index')->with('success', 'Invoice updated');
     }
 
     /**
