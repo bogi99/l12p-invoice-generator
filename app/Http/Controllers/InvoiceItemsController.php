@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\InvoiceItems;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,11 @@ class InvoiceItemsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($invoiceId)
     {
         //
+        $invoice = Invoice::with('items')->findOrFail($invoiceId);
+        return view('invoice_items.index', compact('invoice'));
     }
 
     /**
@@ -61,5 +64,7 @@ class InvoiceItemsController extends Controller
     public function destroy(InvoiceItems $invoiceItems)
     {
         //
+        $invoiceItems->delete();
+        return redirect()->back()->with('success', 'Item deleted');
     }
 }
