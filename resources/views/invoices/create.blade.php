@@ -8,11 +8,11 @@
             <form action="/invoices" method="POST" class="bg-amber-200 p-2 ">
                 @csrf
                 @method('POST')
-                <div class="flex flex-col">
+                {{-- <div class="flex flex-col">
                 <label class="" for="numx">Invoice Number:</label>
                 <input id='numx' name="num" type="text" class="bg-amber-50">
 
-                </div>
+                </div> --}}
 
                 <div class="mb-4">
                     @error('num')

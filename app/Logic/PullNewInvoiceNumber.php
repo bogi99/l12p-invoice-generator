@@ -13,7 +13,7 @@ class PullNewInvoiceNumber
      * Create a new class instance.
      *
      * @param  serialNumber  $serialNumber
-     * @return void
+     * @return string 
      */
 
     public function __construct(serialNumber $serialNumber)

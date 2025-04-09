@@ -10,8 +10,8 @@
                 @method('PATCH') 
                 <div class="flex flex-col">
                 <label class="" for="numx">Invoice Number:</label>
-                <input id='numx' name="num" type="text" class="bg-amber-50" value="{{ $invoice->num }}" >
-                
+                <input id='numx' name="num" type="text" class="bg-amber-50" value="{{ $invoice->num }}" disabled >
+                <input type="hidden" name="num" value="{{ $invoice->num }}" >
 
                 </div>
 
